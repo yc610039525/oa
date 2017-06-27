@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.tarena.entity.User" 
+		table="user">
+		<id name="userID" type="int" column="userID">
+			<generator class="identity">
+			</generator>
+		</id>
+		<property name="roleID" type="int"
+			column="roleID">
+		</property>
+		<property name="password" type="string" 
+			column="password">
+		</property>
+		<property name="username" type="string" 
+			column="username">
+		</property>
+		<property name="sex" type="int" 
+			column="sex">
+		</property>
+		<property name="age" 
+			type="int" column="age">
+		</property>
+	<!--
+		<property name="departmentID" 
+			type="int" column="departmentID">
+		</property>
+	-->
+		<property name="position" 
+			type="int" column="position">
+		</property>
+		<property name="introduction" 
+			type="string" column="introduction">
+		</property>
+		<property name="interests" 
+			type="string" column="interests">
+		</property>
+		<property name="phone" 
+			type="string" column="phone">
+		</property>
+		<property name="mobilephone" 
+			type="string" column="mobilephone">
+		</property>
+		<property name="email" 
+			type="string" column="email">
+		</property>
+		<property name="address" 
+			type="string" column="address">
+		</property>
+		<!--采用多对一关系映射加载相关的Department信息-->
+		<many-to-one name="dept" column="departmentID"
+			class="org.tarena.entity.Department"/>
+	</class>
+</hibernate-mapping>
+
+

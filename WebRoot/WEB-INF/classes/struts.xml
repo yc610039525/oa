@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+	<package name="employer" namespace="/user"
+		extends="struts-default">
+		<!-- 进入列表检索页面 -->
+		<action name="index">
+			<result>
+			/systemmanage/employerManager.jsp
+			</result>
+		</action>
+		<!-- 列表检索处理 -->
+		<action name="list" class="userListAction">
+			<result name="success" type="dispatcher">
+				/systemmanage/employerManager.jsp
+			</result>
+		</action>
+	</package>
+	
+	<package name="dept" namespace="/department"
+		extends="json-default">
+		<!-- 加载部门下拉列表信息 -->
+		<action name="list" class="departmentListAction">
+			<result name="success" type="json">
+				<param name="root">depts</param>
+			</result>
+		</action>
+		
+	</package>
+	
+	
+	
+</struts>
+
+
+

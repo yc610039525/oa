@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+<!-- 
+1.filter必须在struts filter控制器之前定义
+2.spring容器中sessionfactory对象名字必须为sessionFactory
+3.会将session操作设置为只读模式,会影响增删改操作
+　解决方法：追加spring事务管理
+ -->
+<filter>
+	<filter-name>opensessioninview</filter-name>
+	<filter-class>
+org.springframework.orm.hibernate3.support.OpenSessionInViewFilter
+	</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>opensessioninview</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
+
+	<filter>
+		<filter-name>strutsfilter</filter-name>
+		<filter-class>
+org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+		</filter-class>
+		<!-- 默认加载src下的struts.xml -->
+	</filter>
+	<filter-mapping>
+		<filter-name>strutsfilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+<!-- 配置监听器加载Spring容器 -->
+<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>classpath:applicationContext.xml</param-value>
+</context-param>
+<listener>
+	<listener-class>
+org.springframework.web.context.ContextLoaderListener
+	</listener-class>
+</listener>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

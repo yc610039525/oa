@@ -1,0 +1,72 @@
+create table User(
+ userID int primary key auto_increment,
+ roleID int,
+ password varchar(15),
+ username varchar(10),
+ sex int,
+ age int,
+ departmentID int,
+ position int,
+ introduction varchar(100),
+ interests varchar(50),
+ phone varchar(20),
+ mobilephone varchar(20),
+ email varchar(40),
+ address varchar(60)
+) charset=utf8;
+
+create table department(
+ departmentID int primary key auto_increment,
+ departmentName varchar(20),
+ duty varchar(100),
+ phone varchar(20)
+) charset=utf8;
+
+1.创建web项目，导入页面和js,css等
+2.采用SSH结构
+　--引入jar包
+    hibernate
+    spring:ioc
+    struts2
+    spring+hibernate:aop,dbcp,dao,orm
+    spring+struts2:struts-spring-plugin.jar
+　--引入配置文件
+    spring:applicationContext.xml
+    struts2:struts.xml
+  --构建hibernate+spring基础环境
+　　实体类
+　　hbm映射描述文件
+    在applicationContext.xml中定义
+　　dbcp-->sessionfactory-->template
+    测试spring容器实例化
+　（可以检测hbm及<bean>定义的正确性）
+3.设计流程
+/user/list.action
+-->Filter(web.xml中ContextLoaderLisenter和StrtusFilter配置)
+-->UserListAction(struts.xml中<action配置>)
+-->UserService
+-->UserDao-->user查询
+-->Result(struts.xml中<result配置>)
+-->employerManager.jsp
+
+
+insert into user values(101,1,'111','小麦',1,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(102,1,'222','阿娥',1,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(103,1,'222','晓明',2,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(104,1,'222','执行',2,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(105,1,'222','流量',1,26,2,1,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(106,1,'222','功臣',1,26,2,1,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(107,1,'222','周围',1,26,2,1,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(108,1,'222','恭喜',1,26,2,1,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(109,1,'222','金童',2,26,2,1,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(110,1,'222','老表',2,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(111,1,'222','小赵',2,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(112,1,'222','老莫',2,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(113,1,'222','小草',1,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(114,1,'222','小明',1,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(115,1,'222','小红',1,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(116,1,'222','宏伟',1,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+insert into user values(117,1,'222','小宏',1,26,2,3,'个人简介xxxx','游泳,旅游','02754842154','13005458512','fabf@sina.com','北京xxx');
+
+
+
